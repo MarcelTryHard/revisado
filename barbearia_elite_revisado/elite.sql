@@ -124,3 +124,107 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE IF NOT EXISTS clientes (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+nome VARCHAR(100) NOT NULL,
+
+telefone VARCHAR(30),
+
+email VARCHAR(120),
+
+criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+
+
+
+CREATE TABLE IF NOT EXISTS servicos (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+nome VARCHAR(100) NOT NULL,
+
+descricao TEXT,
+
+preco DECIMAL(10,2) NOT NULL,
+
+duracao INT NOT NULL,
+
+ativo BOOLEAN DEFAULT TRUE
+
+);
+
+
+
+CREATE TABLE IF NOT EXISTS barbeiros (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+nome VARCHAR(100) NOT NULL,
+
+telefone VARCHAR(30),
+
+especialidade VARCHAR(100),
+
+ativo BOOLEAN DEFAULT TRUE
+
+);
+
+
+
+CREATE TABLE IF NOT EXISTS pagamentos (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+agendamento_id INT,
+
+valor DECIMAL(10,2),
+
+forma_pagamento VARCHAR(50),
+
+data TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+
+
+
+CREATE TABLE IF NOT EXISTS configuracoes (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+nome_barbearia VARCHAR(100),
+
+telefone VARCHAR(30),
+
+endereco VARCHAR(255),
+
+horario VARCHAR(255)
+
+);
+
+
+
+-- Serviços iniciais
+
+INSERT INTO servicos
+(nome,descricao,preco,duracao)
+VALUES
+
+('Corte Masculino',
+'Corte tradicional masculino',
+45.00,
+30),
+
+
+('Barba Completa',
+'Barba feita na navalha',
+35.00,
+25),
+
+
+('Corte + Barba',
+'Combo completo',
+70.00,
+55);
